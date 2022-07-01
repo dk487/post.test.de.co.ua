@@ -22,7 +22,7 @@
     </style>
   </head>
   <body>
-    <form action="badumts.php" method="post">
+    <form action="/demo.php" method="post">
       <div class="container">
         <div class="header">
           <input type="text" name="title" value="" placeholder="Заголовок" required>
@@ -34,18 +34,15 @@
           <input type="submit" value="Публікувати">
         </div>
       </div>
-
     </form>
     <script>
       document.addEventListener('DOMContentLoaded', (e) => {
         document.querySelector('textarea[name="content"]').focus();
       });
-
       function fixHeight() {
         var h = window.innerHeight + 'px';
         document.documentElement.style.setProperty('--h', h);
       }
-
       fixHeight();
       window.addEventListener('resize', fixHeight);
     </script>
