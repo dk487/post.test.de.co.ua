@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Написати в блоґ</title>
+    <link rel="icon" href="favicon.svg">
+    <style>
+      :root { --h: 100vh }
+      html, body, input, textarea { margin: 0; padding: 0 }
+      body, input, textarea { font: 1.5rem/1.5 'Droid Sans Mono', fixed }
+      input, textarea { padding: .5rem .75rem; border: 3px solid #ccc }
+      input:focus, textarea:focus { border-color: #fa5; outline: none }
+      .container { max-width: 50rem; margin: 0 auto }
+      .header input,
+      .content textarea { width: min(calc(46.5rem - 6px), calc(100vw - 3.5rem - 6px)) }
+      .header, .buttons { padding: 1rem }
+      .content { padding: 0 1rem }
+      .content textarea { height: calc(var(--h) - 12rem - 24px) }
+      .buttons { text-align: right }
+      .buttons input { padding: .5rem 1.75rem }
+    </style>
+  </head>
+  <body>
+    <form action="badumts.php" method="post">
+      <div class="container">
+        <div class="header">
+          <input type="text" name="title" value="" placeholder="Заголовок" required>
+        </div>
+        <div class="content">
+          <textarea name="content" cols="50" rows="6" placeholder="Текст публікації" required></textarea>
+        </div>
+        <div class="buttons">
+          <input type="submit" value="Публікувати">
+        </div>
+      </div>
+
+    </form>
+    <script>
+      document.addEventListener('DOMContentLoaded', (e) => {
+        document.querySelector('textarea[name="content"]').focus();
+      });
+
+      function fixHeight() {
+        var h = window.innerHeight + 'px';
+        document.documentElement.style.setProperty('--h', h);
+      }
+
+      fixHeight();
+      window.addEventListener('resize', fixHeight);
+    </script>
+  </body>
+</html>
