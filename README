@@ -1,0 +1,1 @@
+GIT_SSH_COMMAND='ssh -i var/ssh/post_tool' git clone git@github.com:dk487/test.de.co.ua.git var/repo
