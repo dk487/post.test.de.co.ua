@@ -89,7 +89,9 @@ class UkrainianTransliteration
     function convertToSlug(string $input): string
     {
         $words = preg_split('/[^\w\d\']+/u', $input);
-        return join('-', array_map(fn($w) => $this->convertWord($w), $words));
+        $words = array_filter($words, fn($w) => !!$w);
+        $words = array_map(fn($w) => self::convertWord($w), $words);
+        return join('-', $words);
     }
 
 }
