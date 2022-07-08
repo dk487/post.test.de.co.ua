@@ -26,7 +26,7 @@ class PostFile
     public function getFileContent(): string
     {
         $date = $this->post->time->format('Y-m-d H:i:s P');
-        $content = strtr($this->post->content, "\r", '');
+        $content = str_replace("\r", '', $this->post->content);
 
         return <<<MARKDOWN
 ---
