@@ -5,9 +5,9 @@ namespace Helper;
 
 // https://zakon.rada.gov.ua/laws/show/55-2010-%D0%BF
 
-class UkrainianTransliteration
+class UkrTranslit
 {
-    const ENCODING = 'UTF-8';
+    public const ENCODING = 'UTF-8';
 
     public const TRANSLIT_FIRST = [
         'є' => 'ye',
@@ -58,7 +58,7 @@ class UkrainianTransliteration
         '\'' => '',
     ];
 
-    public function convertWord(string $input): string
+    public static function convertWord(string $input): string
     {
         $input = mb_strtolower($input, self::ENCODING);
         $len = mb_strlen($input, self::ENCODING);
@@ -86,7 +86,7 @@ class UkrainianTransliteration
         return $result;
     }
 
-    function convertToSlug(string $input): string
+    public static function convertToSlug(string $input): string
     {
         $words = preg_split('/[^\w\d\']+/u', $input);
         $words = array_filter($words, fn($w) => !!$w);
