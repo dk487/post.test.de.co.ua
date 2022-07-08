@@ -1,1 +1,11 @@
-GIT_SSH_COMMAND='ssh -i var/ssh/post_tool' git clone git@github.com:dk487/test.de.co.ua.git var/repo
+imposter@shelter:~$ cd /var/www/post.test.de.co.ua/
+imposter@shelter:/var/www/post.test.de.co.ua$ mkdir -m0700 var var/ssh
+imposter@shelter:/var/www/post.test.de.co.ua/var$ cd var/ssh
+imposter@shelter:/var/www/post.test.de.co.ua/var/ssh$ ssh-keygen -f post_tool -t ed25519 
+imposter@shelter:/var/www/post.test.de.co.ua/var/ssh$ cd ..
+imposter@shelter:/var/www/post.test.de.co.ua/var$ GIT_SSH_COMMAND='ssh -i ssh/post_tool' git clone git@github.com:dk487/test.de.co.ua.git repo/
+imposter@shelter:/var/www/post.test.de.co.ua/var/ssh$ cd repo
+
+imposter@shelter:/var/www/post.test.de.co.ua/var/repo$ GIT_SSH_COMMAND='ssh -i ../ssh/post_tool' git push -u origin master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+Everything up-to-date
