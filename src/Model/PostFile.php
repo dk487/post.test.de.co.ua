@@ -26,6 +26,7 @@ class PostFile
     public function getFileContent(): string
     {
         $date = $this->post->time->format('Y-m-d H:i:s P');
+        $content = strtr($this->post->content, "\r", '');
 
         return <<<MARKDOWN
 ---
@@ -33,7 +34,7 @@ title: {$this->post->title}
 date: $date
 ---
 
-{$this->post->content}
+$content
 
 MARKDOWN;
     }

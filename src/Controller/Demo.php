@@ -16,6 +16,7 @@ class Demo
 
         // echo '<h1>' . htmlspecialchars($file->getFileName()) . '</h1>';
         // echo '<pre>' . htmlspecialchars($file->getFileContent()) . '</pre>';
+        // return;
 
         $repo->doPull();
         $file->saveFile();
