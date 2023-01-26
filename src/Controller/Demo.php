@@ -20,7 +20,7 @@ class Demo
 
         $repo->doPull();
         $file->saveFile();
-        $repo->doCommitAll('New post: ' . $file->post->title);
+        $repo->doCommitAll('New post: ' . $file->post->title, $file->post->time);
         $repo->doPush();
         echo '<h1>OK</h1>';
         echo '<pre>' . htmlspecialchars($repo->output) . '</pre>';

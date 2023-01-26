@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace Helper;
 
+use DateTimeInterface;
+
 class GitRepo
 {
     public string $dir;
@@ -32,10 +34,21 @@ class GitRepo
         return $this->runCommand('git pull');
     }
 
-    public function doCommitAll(string $status = 'Post from web'): bool
+    public function doCommitAll(
+        string $status = 'Post from web',
+        ?DateTimeInterface $dt = null
+    ): bool
     {
-        return $this->runCommand('git add -A')
-            && $this->runCommand('git commit -m "' . addslashes($status) . '"');
+        $gitAdd = 'git add -A';
+
+        $gitCommit = 'git commit';
+        if ($dt !== null) {
+            $gitCommit .= ' -date="' . $dt->format('c') . '"';
+        }
+        $gitCommit .= ' -m "' . addslashes($status) . '"';
+
+        return $this->runCommand($gitAdd)
+            && $this->runCommand($gitCommit);
     }
 
     public function doPush(): bool
